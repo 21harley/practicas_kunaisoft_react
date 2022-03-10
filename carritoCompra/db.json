@@ -1,0 +1,29 @@
+{
+    "products": [
+      {
+        "id": 1,
+        "name": "Computadora Dell Cpu Intel I5 8gb 500gb Optiplex Tienda",
+        "dollar":230,
+        "shopId": 1,
+        "img":"https://http2.mlstatic.com/D_NQ_NP_2X_673397-MLV49061999257_022022-F.webp",
+        "travel":false
+      },
+      {
+        "id": 2,
+        "name": "Computador Core I5 3.1 Ghz. 4gb, Disco 250gb, Monitor De 19",
+        "dollar":299,
+        "shopId": 1,
+        "img":"https://http2.mlstatic.com/D_NQ_NP_849299-MLV47935093636_102021-O.webp",
+        "travel":true
+      },
+      {
+        "id": 3,
+        "name": "Fuente De Poder De 600w Con Cable De Poder Nuevo!!",
+        "dollar":19.99,
+        "shopId": 1,
+        "img":"https://http2.mlstatic.com/D_NQ_NP_2X_822133-MLV43672098139_102020-F.webp",
+        "travel":false
+      }
+    ]
+}
+  
