@@ -1,0 +1,19 @@
+ Buenos dias
+ Muchachos se me complicó un poco
+ Para enviarte el mini proyecto
+
+ Pero básicamente es una pantalla dónde se vea el listado de productos con descripción y precio y en esa misma pantalla que se vea cuando vas agregando los productos y
+ se sumen los totales, en pantalla 1
+
+ hacer un botón de pago hacia otra pantalla que sería el checkout, donde va tener el detalle de la orden y un botón de pago que con random muestre si el pago
+ fue exitoso o no,
+
+ y una tercera pantalla dónde se vean todas las transacciones
+ Cuando digo pantallas no quiere decir q se vaya a recargar la página, se debe usar el routing de react
+
+ Los estilos los dejaré para que nos sorprendas
+
+ Debes usar redux toolkit o redux
+
+ También le vamos a meter PayPal
+ Pero no para esta fase

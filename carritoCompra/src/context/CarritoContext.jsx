@@ -1,10 +1,12 @@
 import React,{createContext, useEffect, useReducer, useState} from 'react';
 import carritoReducer, { carritoInitialState } from '../reducers/carritoReducer';
+import listaCompReducer, { listaCompInitialState } from '../reducers/listaCompReducer';
 
 export const carritoContext = createContext()
 
 export default function CarritoContext({children}) {
     const [listaCompra,setListaCompra]=useReducer(carritoReducer,carritoInitialState);
+    const [listaTra,setListaTraCompra]=useReducer(listaCompReducer,listaCompInitialState);
 
     useEffect(()=>{
         fetch('http://localhost:5000/products')
@@ -15,7 +17,7 @@ export default function CarritoContext({children}) {
         })
     },[]);
 
-return <carritoContext.Provider value={{carrito:listaCompra,setListaCompra}}>
+return <carritoContext.Provider value={{carrito:listaCompra,setListaCompra,listaTra:listaTra,setListaTraCompra}}>
         {children}
     </carritoContext.Provider>
 }

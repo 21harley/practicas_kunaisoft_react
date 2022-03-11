@@ -5,10 +5,14 @@ const ShopCar=({data,comprar:agregarCarrito,bajar:bajarCarrito})=>{
       <div className="flex justify-center text-center">
         <h1>
           React and Tailwind with Vitejs!
-          <ul className=' justify-center items-center md:flex gap-4'>
+          <ul className='flex flex-col justify-center items-center gap-4'>
           {
             data.map((el,index)=>{
-              return <ShoItem key={el.name} elemento={el} comprar={agregarCarrito} bajar={bajarCarrito} index={index}></ShoItem>
+              return(
+                (el.shopId>0)
+                  ?<ShoItem key={el.name} elemento={el} comprar={agregarCarrito} bajar={bajarCarrito} index={index}></ShoItem>
+                  :<></>
+              ) 
             })
           }
           </ul>
