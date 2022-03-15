@@ -1,10 +1,11 @@
-import React,{createContext, useEffect, useReducer, useState} from 'react';
+import React,{createContext, useEffect, useReducer } from 'react';
 import carritoReducer, { carritoInitialState } from '../reducers/carritoReducer';
 import listaCompReducer, { listaCompInitialState } from '../reducers/listaCompReducer';
 
-export const carritoContext = createContext()
+export const carritoContext = createContext();
 
-export default function CarritoContext({children}) {
+export default function CarritoContext({children}){
+
     const [listaCompra,setListaCompra]=useReducer(carritoReducer,carritoInitialState);
     const [listaTra,setListaTraCompra]=useReducer(listaCompReducer,listaCompInitialState);
 
@@ -17,7 +18,8 @@ export default function CarritoContext({children}) {
         })
     },[]);
 
-return <carritoContext.Provider value={{carrito:listaCompra,setListaCompra,listaTra:listaTra,setListaTraCompra}}>
+    return <carritoContext.Provider value={{carrito:listaCompra,setListaCompra,listaTra:listaTra,setListaTraCompra}}>
         {children}
     </carritoContext.Provider>
+
 }
