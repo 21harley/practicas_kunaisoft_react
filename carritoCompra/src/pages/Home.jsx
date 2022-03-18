@@ -1,7 +1,7 @@
 import {useEffect} from 'react';
-import Nav from '../componet/Nav';
-import ListaProductos from '../componet/listaProductos';
-import Footer from '../componet/Footer';
+import Nav from './../componet/Nav/Nav';
+import ListaProductos from './../componet/ListaProductos/ListaProductos';
+import Footer from './../componet/Footer/Footer';
 
 const Home=()=>{
   useEffect(()=>{

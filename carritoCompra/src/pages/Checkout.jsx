@@ -1,15 +1,18 @@
 import { Link} from "react-router-dom";
 import { useContext, useEffect } from 'react';
 import {  useNavigate  } from "react-router-dom";
-import { carritoContext } from '../context/CarritoContext';
+import { useDispatch,useSelector } from "react-redux";
+import {addCC,compYes} from '../reducers/Redux_toolkit/slices/carrito';
+
 import './../App.css';
 
 const Checkout=()=>{
 
   let navigate = useNavigate();
-  const {carrito,setListaCompra,setListaTraCompra}=useContext(carritoContext);
-  let {total,carritoComp}=carrito;
-  
+  const {carritoComp,total} =useSelector(state=>state.carrito);
+  let tt=total.toFixed(2);
+
+  const dispatch=useDispatch();
   useEffect(()=>{
     window.scrollTo(0, 0);
   },[])
@@ -20,8 +23,8 @@ const Checkout=()=>{
     let espera=setInterval(()=>{
       if(random%2==0){
         alert('Su compra fue exitosa');
-        setListaTraCompra({type:'add',carritoComp,total})
-        setListaCompra({type:'comp-yes',carrito,total});
+        dispatch(addCC({type:'addCC',carritoComp,total}));
+        dispatch(compYes({type:'compYes',carrito,total}))
         navigate('/lista_de_compras');
       }else{
         alert('Su compra no fue exitosa, vuelva a intentar');
@@ -59,7 +62,7 @@ const Checkout=()=>{
          {
            (total>0)?<>
               <div className='bg-black w-full flex flex-col justify-center items-center text-white p-2 mt-5'>
-                Total de su compra:$ {total.toFixed(2)}
+                Total de su compra:$ {tt}
               </div>
               <button onClick={()=>{acetarCompra()}} 
                 className='w-full justify-center h-10 p-5 flex items-center rounded-sm bg-black hover:bg-green-600 text-white'>

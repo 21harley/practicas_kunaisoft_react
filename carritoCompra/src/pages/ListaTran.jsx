@@ -1,13 +1,17 @@
 import { useContext, useEffect } from 'react';
 import { Link} from "react-router-dom";
-import { carritoContext } from '../context/CarritoContext';
-import Footer from '../componet/Footer';
+import { useDispatch,useSelector } from "react-redux";
+import {addCC,compYes} from '../reducers/Redux_toolkit/slices/carrito';
+import Footer from './../componet/Footer/Footer';
 import home from './../svg/home.svg';
 
 const listaCompra=()=>{
 
-  const {listaTra}=useContext(carritoContext);
-  const {lista}=listaTra;
+  let navigate = useNavigate();
+  const {carritoComp,total} =useSelector(state=>state.carrito);
+  let tt=total.toFixed(2);
+
+  const dispatch=useDispatch();
 
   useEffect(()=>{
     window.scrollTo(0, 0);
@@ -67,4 +71,5 @@ const listaCompra=()=>{
 }
 
 export default listaCompra;
+
 

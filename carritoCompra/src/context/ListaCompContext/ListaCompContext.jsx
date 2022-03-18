@@ -1,5 +1,5 @@
 import React,{createContext, useReducer } from 'react';
-import listaCompReducer, { listaCompInitialState } from '../reducers/listaCompReducer';
+import listaCompReducer, { listaCompInitialState } from '../../reducers/Redux_classic/listaCompReducer';
 
 export const listaCompContext = createContext();
 
