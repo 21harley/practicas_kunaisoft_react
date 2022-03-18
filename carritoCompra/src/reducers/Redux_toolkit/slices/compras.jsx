@@ -10,7 +10,18 @@ export const comprasSlice=createSlice({
   initialState,
   reducers:{
     addLista:(state,action)=>{
-      
+      let id = Math.floor(Math.random() * (40000000 - 30000000 + 1)) + 30000000;
+      state = {
+        lista: [
+          ...state.lista,
+          {
+            carrito: action.payload.carritoComp,
+            totalComp: action.payload.total,
+            id: id,
+            date: new Date().toLocaleDateString(),
+          },
+        ],
+      };
     }
   }
 });

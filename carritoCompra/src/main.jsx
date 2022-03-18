@@ -1,7 +1,5 @@
 import React from "react";
 import ReactDOM from "react-dom";
-//import CarritoContext from './context/CarritoContext';
-//redux
 import { Provider } from "react-redux";
 import  store from "./reducers/Redux_toolkit/store/Store";
 

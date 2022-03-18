@@ -1,8 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import {mLista,comp} from '../../reducers/Redux_toolkit/slices/carrito';
-//import { carritoContext } from "../../context/CarritoContext";
-
 import cart from "./../../svg/cart.svg";
 import hide from "./../../svg/hide.svg";
 import show from "./../../svg/show.svg";
