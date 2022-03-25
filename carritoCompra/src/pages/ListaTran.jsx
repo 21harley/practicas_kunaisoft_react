@@ -1,17 +1,12 @@
-import { useContext, useEffect } from 'react';
+import {  useEffect } from 'react';
 import { Link} from "react-router-dom";
-import { useDispatch,useSelector } from "react-redux";
-import {addCC,compYes} from '../reducers/Redux_toolkit/slices/carrito';
+import { useSelector } from "react-redux";
 import Footer from './../componet/Footer/Footer';
 import home from './../svg/home.svg';
 
 const listaCompra=()=>{
 
-  let navigate = useNavigate();
-  const {carritoComp,total} =useSelector(state=>state.carrito);
-  let tt=total.toFixed(2);
-
-  const dispatch=useDispatch();
+  const {listaCompras} =useSelector(state=>state.compras);
 
   useEffect(()=>{
     window.scrollTo(0, 0);
@@ -24,8 +19,8 @@ const listaCompra=()=>{
         <div>
           <ul>
             {
-              (lista.length>0)?
-              lista.map((el,index)=>{
+              (listaCompras.length>0)?
+              listaCompras.map((el,index)=>{
                 let {carrito,totalComp,id,date}=el;
                 totalComp=totalComp.toFixed(2);
                 return(

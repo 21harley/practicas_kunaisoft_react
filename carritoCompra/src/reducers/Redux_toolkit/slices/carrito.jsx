@@ -7,6 +7,7 @@ const initialState = {
   iniciarCom: false,
   lista: [],
   mostrarLista: false,
+  carga:false,
 }
 
 export const carritoSlice=createSlice({
@@ -15,6 +16,7 @@ export const carritoSlice=createSlice({
   reducers:{
     setCarritoList:(state,action)=>{
       state.lista=action.payload;
+      state.carga=!state.carga;
     },
     addCC(state,action){
       let valida = true;

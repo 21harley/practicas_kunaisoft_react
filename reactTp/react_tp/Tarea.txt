@@ -1,0 +1,6 @@
+A-Hacer un formulario que genere card 
+B- Cada card tiene las funcionalidades de: 
+1) eliminar
+2) Editar
+3) cambiar color
+

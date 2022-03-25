@@ -7,10 +7,10 @@ import { useEffect } from "react";
 
 const ListaProductos = () => {
   const dispatch=useDispatch();
-  const {lista,total,mostrarLista,carritoComp} =useSelector(state=>state.carrito);
+  const {lista,total,mostrarLista,carritoComp,carga} =useSelector(state=>state.carrito);
   
   useEffect(()=>{
-    dispatch(AxiosAllItem());
+    if(!carga) dispatch(AxiosAllItem());
   },[]);
 
   //let carrito=[],total=0,mostrarLista=false;

@@ -3,7 +3,7 @@ import { useContext, useEffect } from 'react';
 import {  useNavigate  } from "react-router-dom";
 import { useDispatch,useSelector } from "react-redux";
 import {addCC,compYes} from '../reducers/Redux_toolkit/slices/carrito';
-
+import { addLista } from "../reducers/Redux_toolkit/slices/compras";
 import './../App.css';
 
 const Checkout=()=>{
@@ -11,6 +11,8 @@ const Checkout=()=>{
   let navigate = useNavigate();
   const {carritoComp,total} =useSelector(state=>state.carrito);
   let tt=total.toFixed(2);
+
+  const {listaCompras} =useSelector(state=>state.compras);
 
   const dispatch=useDispatch();
   useEffect(()=>{
@@ -23,8 +25,8 @@ const Checkout=()=>{
     let espera=setInterval(()=>{
       if(random%2==0){
         alert('Su compra fue exitosa');
-        dispatch(addCC({type:'addCC',carritoComp,total}));
-        dispatch(compYes({type:'compYes',carrito,total}))
+        dispatch(addLista({type:'addLista',carritoComp,total}));
+        dispatch(compYes({type:'compYes',carritoComp,total}))
         navigate('/lista_de_compras');
       }else{
         alert('Su compra no fue exitosa, vuelva a intentar');
