@@ -1,0 +1,61 @@
+Herramienta para Conversión de Moneda
+Mini proyecto inicio:30-03-2022
+
+Requerimientos:
+
+Hacer uso de redux toolkit
+Autenticación con firebase
+
+Parte I
+
+Construir pantallas para realizar el respectivo proceso de Sign In / Sign Up con Firebase
+Parte II
+
+Una vez que el usuario se loguee, tiene la posibilidad de usar un conversor de monedas. Por lo que se requiere desarrollar una herramienta que tenga la funcionalidad de convertir dos pares de monedas.
+
+El usuario va a disponer de dos campos de texto. Los cuales van a reflejar el valor convertido. Además dispondrá de una lista al lado de cada uno de los campos de texto, donde puede seleccionar la moneda a la que corresponde dicho campo de texto. En la Fig. 1 puedes ver un ejemplo ilustrativo de cómo queremos que se vea dicha herramienta. 
+
+Figura 1. Convertidor de moneda
+
+Debe ser completamente interactivo y reactivo, es decir, que los valores 
+de los campos cambian a medida que cambian las selecciones.
+(puedes conseguir la funcionalidad del convertidor en el siguiente enlace:
+https://www.binance.com/en/convert)
+Aunque en el ejemplo tenemos criptomonedas, nuestro convertidor estará 
+basado en monedas de diferentes países. Para ello puedes utilizar las siguientes 
+API’s de las cuales vas a estar alimentando tu aplicación: 
+
+https://fixer.io/
+https://www.currencyconverterapi.com
+
+Acá deberás crear una cuenta y obtener una API key para hacer las peticiones correspondientes.
+
+Para hacer la conversión tendrás que hacer uso de los código ISO de las monedas.
+ En la API está muy bien estructurada la respuesta que se recibe, y de allí vas 
+a estar usando los datos correspondientes a la conversión.
+
+
+Parte II
+
+Además de la capacidad de conversión de la herramienta, se necesita que se muestre 
+un historial de las conversiones que se han hecho con la herramienta. Las conversiones 
+van a estar en el estado de la APP (no se necesita persistencia, es decir, 
+no se requiere guardar en el localStorage, ni en en ninguna base de datos,
+ solo estará almacenado en el estado de la APP).
+
+Es necesario que aunque la vista/página cambie, se deben mantener los valores que el usuario ha ingresado en el conversor de monedas.
+
+Para el diseño/estilos puedes utilizar un framework css de tu elección (bootstrap, tailwindcss), y para el desarrollo vamos a estar utilizando React, y/o Redux Toolkit.
+
+
+
+Definición de Slices
+
+Se requiere tener los siguientes slices dentro del estado:
+
+Login (para tener la información asociada al usuario)
+nombre, correo, identificador
+Conversor (para tener la información necesaria de la configuración actual del conversor)
+moneda origen, moneda destino
+History (para tener el historial de las conversiones que se han realizado)
+
