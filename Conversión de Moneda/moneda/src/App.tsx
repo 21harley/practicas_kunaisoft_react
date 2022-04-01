@@ -1,9 +1,13 @@
-import './App.css'
+import { Provider } from 'react-redux'
+import Store from './reduxer/index'
 import RoutesApp from './routes/RoutesApp'
+import './App.css'
 
 function App () {
   return (
-    <RoutesApp></RoutesApp>
+    <Provider store={Store}>
+      <RoutesApp/>
+    </Provider>
   )
 }
 
