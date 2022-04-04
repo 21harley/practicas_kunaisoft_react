@@ -1,6 +1,11 @@
 import flecha from './../../public/svg/flecha.svg'
-
+import { useDispatch } from 'react-redux'
+import { useAppSelector } from '../../reduxer'
 function CalculatorCp () {
+  const dispatch = useDispatch()
+  const conversor = useAppSelector(state => state.Conversor)
+  const { listData } = conversor
+  console.log(listData?.rates)
   return (
         <div className="bg-black2 w-full h-[500px] justify-center items-center border-0 flex flex-col font-press-start">
           <div className='h-[300px] flex flex-col justify-center items-center'>
@@ -24,7 +29,7 @@ function CalculatorCp () {
             </div>
             </div>
           </div>
-            <button className='w-[280px] p-2 text-white bg-yellow1 hover:bg-yellow rounded'>Enter an amount</button>
+            <button className='w-[280px] p-2 text-white bg-yellow1 hover:bg-yellow2 rounded'>Enter an amount</button>
         </div>
   )
 }

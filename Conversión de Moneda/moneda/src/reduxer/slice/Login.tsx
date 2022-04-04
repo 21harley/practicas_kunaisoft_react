@@ -1,9 +1,7 @@
 import { createSlice } from '@reduxjs/toolkit'
 // import { Axios } from 'axios'
 const initialState = {
-  name: '',
-  email: '',
-  key: '',
+  user: '',
   login_sucess: false,
   login_error: false
 }
@@ -13,20 +11,27 @@ const LoginSlice = createSlice({
   initialState,
   reducers: {
     login: (state, action) => {
-
+      state.user = action.payload.user
+      state.login_sucess = true
     },
-    createUser: (state, action) => {
-
+    loginState: (state, action) => {
+      state.user = action.payload.user
+      state.login_sucess = true
     },
     loginSucess: (state) => {
       state.login_sucess = !state.login_sucess
     },
     loginError: (state) => {
       state.login_error = !state.login_error
+    },
+    loginInit: (state) => {
+      state.user = ''
+      state.login_sucess = false
+      state.login_error = false
     }
   }
 })
 
-export const { login, createUser, loginSucess, loginError } = LoginSlice.actions
+export const { login, loginSucess, loginError, loginState, loginInit } = LoginSlice.actions
 
 export default LoginSlice.reducer

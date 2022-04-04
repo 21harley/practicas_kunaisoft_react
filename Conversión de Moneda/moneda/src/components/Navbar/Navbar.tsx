@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { closetSession } from '../../services/firebase/functionFire'
 import navLogo from './../../public/svg/navLogo.svg'
 import menuLogo from './../../public/svg/menuLogo.svg'
 import closetLogo from './../../public/svg/closetLogo.svg'
@@ -8,14 +9,17 @@ function Navbar () {
   const [activeM, setActiveM] = useState(false)
   const navigate = useNavigate()
   const routerApp = (ruta:string) => {
+    if (ruta === '/home' || ruta === '/login') {
+      closetSession()
+    }
     navigate(ruta)
   }
-  const modalClass = 'h-full overflow-y-auto overflow-x-hidden fixed top-[50px] right-0 left-0 z-50 w-full  h-modal flex justify-center bg-black'
-  const styleBotton = 'h-[40px] mt-3 mb-3  bg-yellow2 w-[280px] flex justify-center items-center hover:bg-yellow1 duration-100 rounded'
+  const modalClass = 'h-full overflow-y-auto overflow-x-hidden fixed top-[50px] right-0 left-0 z-50 w-full  h-modal flex justify-center bg-black2'
+  const styleBotton = 'h-[40px] mt-3 mb-3  bg-yellow1 w-[280px] flex justify-center items-center hover:bg-yellow2 duration-100 rounded'
   return (
       <>
         <nav className=' h-[50px] font-press-start text-white'>
-            <ul className={'flex justify-between h-full items-center ' + ((activeM) ? 'bg-black' : 'bg-black2') }>
+            <ul className={'flex justify-between h-full items-center bg-black2' }>
                 <li className='ml-14'>
                     <img src={navLogo} alt="logo Navbar" />
                 </li>
