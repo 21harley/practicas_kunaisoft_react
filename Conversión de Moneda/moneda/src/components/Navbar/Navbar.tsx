@@ -33,7 +33,7 @@ function Navbar () {
         <div className={(activeM) ? modalClass : 'hidden'} >
              <ul className='flex justify-center flex-col font-press-start text-white h-[300px] mt-[100px]'>
                  <li>
-                     <button className={styleBotton} onClick={() => { routerApp('/home') }}>Home </button>
+                     <button className={styleBotton} onClick={() => { routerApp('/history') }}>History </button>
                  </li>
                  <li>
                      <button className={styleBotton} onClick={() => { routerApp('/calculator') }}>Calculator </button>

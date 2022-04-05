@@ -7,7 +7,9 @@ import Login from '../Login/Login'
 import { useEffect } from 'react'
 
 function Calculator () {
-  const login = useAppSelector(state => state.Login)
+  const login = useAppSelector(state => {
+    return state.Login
+  })
 
   const dispatch = useDispatch()
 

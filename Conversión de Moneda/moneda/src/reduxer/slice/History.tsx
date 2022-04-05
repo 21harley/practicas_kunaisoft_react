@@ -1,12 +1,15 @@
 import { createSlice } from '@reduxjs/toolkit'
 // import { Axios } from 'axios'
-interface CM{
-    MO: Object,
-    MA: Object
+interface data{
+  date: string,
+  MA: string,
+  NA: string,
+  MO: string,
+  NO: string
 }
 
 const initialState = {
-  listCM: [] as CM[]
+  listCM: [] as data[]
 }
 
 const HistorySlice = createSlice({
@@ -14,10 +17,11 @@ const HistorySlice = createSlice({
   initialState,
   reducers: {
     addListCM: (state, action) => {
-      const { datosConve } = action.payload
-      state.listCM.push(datosConve)
+      const datos = action.payload?.datos
+      if (datos) state.listCM.push(datos)
     }
   }
 })
-// export default {getLHistoryuser} loinSlice.actions
+
+export const { addListCM } = HistorySlice.actions
 export default HistorySlice.reducer

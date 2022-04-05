@@ -10,13 +10,17 @@ export const apiFixer = createAsyncThunk('conversor/listData', () => {
 })
 
 const initialState = {
-  listData: Object,
-  MO: {},
-  MA: {}
+  listData: Array,
+  date: '',
+  base: '',
+  MO: '',
+  NO: 0,
+  MA: '',
+  NA: 0
 }
 
 const ConversorSlice = createSlice({
-  name: 'History',
+  name: 'Conversor',
   initialState,
   reducers: {
     setConversorMA: (state, action) => {
@@ -24,13 +28,21 @@ const ConversorSlice = createSlice({
     },
     setConversorMO: (state, action) => {
       state.MO = action.payload.MO
+    },
+    setConversorNA: (state, action) => {
+      state.NA = action.payload.NA
+    },
+    setConversorNO: (state, action) => {
+      state.NO = action.payload.NO
     }
   },
   extraReducers: {
     [apiFixer.fulfilled.type]: (state, action) => {
-      state.listData = action.payload
+      state.listData = action.payload.rates
+      state.base = action.payload.base
+      state.date = action.payload.date
     }
   }
 })
-// export default  ConversorSlice
+export const { setConversorMA, setConversorMO, setConversorNA, setConversorNO } = ConversorSlice.actions
 export default ConversorSlice.reducer

@@ -3,7 +3,7 @@ import { Link, useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
 import { login } from '../../reduxer/slice/Login'
 import { loginUser } from './../../services/firebase/functionFire'
-import confirmInputs from './../../utils/function/index'
+import { confirmInputs } from './../../utils/function/index'
 import Logo from './../../public/svg/Logo.svg'
 import './../../public/css/animated.css'
 

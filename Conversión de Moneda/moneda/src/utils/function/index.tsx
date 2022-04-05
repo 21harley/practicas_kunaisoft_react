@@ -1,3 +1,4 @@
+import React from 'react'
 type inputUser = {
     typeI:String,
     value:String
@@ -8,7 +9,7 @@ type res={
   desc:string
 }
 
-const confirmInputs = (record:inputUser[]):res => {
+export function confirmInputs (record:inputUser[]):res {
   const rep = false
   if (record.length === 0) {
     return { type: rep, desc: 'length 0' }
@@ -30,4 +31,33 @@ const confirmInputs = (record:inputUser[]):res => {
   return { type: !rep, desc: '' }
 }
 
-export default confirmInputs
+export function sliceCoin (m:string, type:string) {
+  switch (type) {
+    case 'item-1':
+      if (m.length > 0) {
+        return m.split('-')[1]
+      } else {
+        return ''
+      }
+    case 'item-2':
+      return m.split('-')
+    case 'item-3':
+      if (m.length > 0) {
+        return m.split('-')[0]
+      } else {
+        return ''
+      }
+  }
+  return ''
+}
+
+export function investCurrency (form:React.RefObject<HTMLFormElement>) {
+  const auxfromV = form.current?.fromNumber.value
+  const auxToV = form.current?.toNumber.value
+  const auxInputS = form.current?.fromInput.value
+  const auxtoS = form.current?.toInput.value
+  if (form.current?.fromNumber.value) form.current.fromNumber.value = Math.ceil(Number(auxToV))
+  if (form.current?.toNumber.value) form.current.toNumber.value = Math.ceil(Number(auxfromV))
+  if (form.current?.fromInput.value) form.current.fromInput.value = auxtoS
+  if (form.current?.toInput.value) form.current.toInput.value = auxInputS
+}
