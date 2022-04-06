@@ -1,12 +1,28 @@
-import React, { useRef } from 'react'
+import React, { useRef, useState, useEffect } from 'react'
 import flecha from './../../public/svg/flecha.svg'
 import { useDispatch } from 'react-redux'
 import { useAppSelector } from '../../reduxer'
-import { setConversorMA, setConversorMO, setConversorNA, setConversorNO } from '../../reduxer/slice/Conversor'
+import {
+  setConversorMA,
+  setConversorMO,
+  setConversorNA,
+  setConversorNO
+} from '../../reduxer/slice/Conversor'
 import { addListCM } from '../../reduxer/slice/History'
 import { sliceCoin, investCurrency } from '../../utils/function/index'
+import Respose from '../Response/ResponseInterface'
 
-function CalculatorCp () {
+type message={
+  state:boolean,
+  type:string,
+  mess:string
+}
+type Props={
+  changeMenu(valor:boolean):void
+}
+const CalculatorCp:React.FC<Props> = ({ changeMenu }) => {
+  const initMessage:message = { state: false, type: '', mess: '' }
+  const [message, setMessage] = useState(initMessage)
   const dispatch = useDispatch()
   const form = useRef<HTMLFormElement>(null)
   const conversor = useAppSelector(state => state.Conversor)
@@ -46,19 +62,33 @@ function CalculatorCp () {
         dispatch(setConversorNO({ NO: e.target.toNumber.value }))
         dispatch(addListCM({ datos: { date: date, MA: MA, NA: valuefrom, MO: MO, NO: e.target.toNumber.value } }))
       } else {
-        alert('Enter the currency')
+        setMessage({
+          state: true,
+          type: 'error',
+          mess: 'Enter the currency'
+        })
+        changeMenu(false)
       }
     } else {
-      alert('Enter the value and currency')
+      setMessage({
+        state: true,
+        type: 'error',
+        mess: 'Enter the value and currency'
+      })
+      changeMenu(false)
     }
   }
+
+  useEffect(() => {
+    if (!message.type) changeMenu(true)
+  }, [message.state])
 
   return (
         <form ref={form} onSubmit={(e) => {
           if (form.current?.toNumber.value) form.current.toNumber.value = 0
           event(e)
         }} className="bg-black2 w-full h-[500px] justify-center items-center border-0 flex flex-col font-press-start">
-          <h1>Change based on the euro on the date {date}</h1>
+          <h1 className='text-white'>Change based on the euro on the date {date}</h1>
           <div className='h-[300px] flex flex-col justify-center items-center'>
             <div>
             <label htmlFor="From" className='text-white'>From</label>
@@ -97,6 +127,11 @@ function CalculatorCp () {
             </div>
           </div>
             <button id='invest' className='w-[280px] p-2 text-white bg-yellow1 hover:bg-yellow2 rounded'>Enter an amount</button>
+            {
+            (message.state)
+              ? <Respose type={message.type} message={message.mess} changeMess={setMessage}></Respose>
+              : <></>
+            }
         </form>
   )
 }

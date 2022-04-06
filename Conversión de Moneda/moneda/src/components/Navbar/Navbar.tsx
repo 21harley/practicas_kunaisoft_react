@@ -1,16 +1,26 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { setInitHistory } from '../../reduxer/slice/History'
+import { setInitConversor } from '../../reduxer/slice/Conversor'
 import { closetSession } from '../../services/firebase/functionFire'
 import navLogo from './../../public/svg/navLogo.svg'
 import menuLogo from './../../public/svg/menuLogo.svg'
 import closetLogo from './../../public/svg/closetLogo.svg'
 
-function Navbar () {
+interface Props{
+    validation:boolean
+}
+
+const Navbar:React.FC<Props> = ({ validation }) => {
   const [activeM, setActiveM] = useState(false)
+  const dispatch = useDispatch()
   const navigate = useNavigate()
   const routerApp = (ruta:string) => {
-    if (ruta === '/home' || ruta === '/login') {
+    if (ruta === '/login') {
       closetSession()
+      dispatch(setInitHistory())
+      dispatch(setInitConversor())
     }
     navigate(ruta)
   }
@@ -24,7 +34,9 @@ function Navbar () {
                     <img src={navLogo} alt="logo Navbar" />
                 </li>
                 <li className='mr-14 '>
-                    <button onClick={() => { setActiveM(!activeM) }} className='w-10 flex items-center justify-center duration-100'>
+                    <button onClick={() => {
+                      if (validation) setActiveM(!activeM)
+                    }} className='w-10 flex items-center justify-center duration-100'>
                         <img src={(activeM) ? closetLogo : menuLogo} alt="menu" />
                     </button>
                 </li>

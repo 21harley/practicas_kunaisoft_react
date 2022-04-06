@@ -2,7 +2,11 @@ import { configureStore } from '@reduxjs/toolkit'
 import Login from './slice/Login'
 import History from './slice/History'
 import Conversor from './slice/Conversor'
-import { TypedUseSelectorHook, useDispatch, useSelector } from 'react-redux'
+import {
+  TypedUseSelectorHook,
+  useDispatch,
+  useSelector
+} from 'react-redux'
 
 const store = configureStore({
   reducer: {

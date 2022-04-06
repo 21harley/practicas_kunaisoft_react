@@ -4,9 +4,10 @@ import { apiFixer } from '../../reduxer/slice/Conversor'
 import { useDispatch } from 'react-redux'
 import { useAppSelector } from './../../reduxer/index'
 import Login from '../Login/Login'
-import { useEffect } from 'react'
+import { useEffect, useState } from 'react'
 
 function Calculator () {
+  const [menu, setMenu] = useState(true)
   const login = useAppSelector(state => {
     return state.Login
   })
@@ -23,8 +24,8 @@ function Calculator () {
       (login.login_sucess)
         ? (
         <div className='h-screen bg-black2 w-full'>
-          <Navbar></Navbar>
-          <CalculatorCp></CalculatorCp>
+          <Navbar validation={menu}></Navbar>
+          <CalculatorCp changeMenu={setMenu}></CalculatorCp>
        </div>
           )
         : <Login/>

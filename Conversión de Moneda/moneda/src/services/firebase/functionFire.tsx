@@ -8,7 +8,13 @@ import {
   GoogleAuthProvider
 } from 'firebase/auth'
 
-export async function creteUserFire (obj:object|any) {
+interface Data{
+  type:string,
+  email:string,
+  pass:string
+}
+
+export async function creteUserFire (obj:Data) {
   const auth = getAuth(appFire)
   switch (obj.type) {
     case 'EmailAndPassword':
@@ -16,7 +22,7 @@ export async function creteUserFire (obj:object|any) {
   }
 }
 
-export async function loginUser (obj:object|any) {
+export async function loginUser (obj:Data) {
   const auth = getAuth(appFire)
   switch (obj.type) {
     case 'EmailAndPassword':

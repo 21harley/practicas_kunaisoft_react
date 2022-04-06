@@ -22,7 +22,7 @@ function App () {
     } else {
       // User is signed out
       // ...
-      console.log('no logeado')
+      console.log('User is signed out')
     }
   })
   return (

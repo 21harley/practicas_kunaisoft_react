@@ -19,9 +19,12 @@ const HistorySlice = createSlice({
     addListCM: (state, action) => {
       const datos = action.payload?.datos
       if (datos) state.listCM.push(datos)
+    },
+    setInitHistory: (state) => {
+      state.listCM = []
     }
   }
 })
 
-export const { addListCM } = HistorySlice.actions
+export const { addListCM, setInitHistory } = HistorySlice.actions
 export default HistorySlice.reducer

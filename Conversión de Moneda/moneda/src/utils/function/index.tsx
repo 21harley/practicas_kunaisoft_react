@@ -1,7 +1,7 @@
 import React from 'react'
 type inputUser = {
-    typeI:String,
-    value:String
+    typeI:string,
+    value:string
 }
 
 type res={
@@ -24,6 +24,9 @@ export function confirmInputs (record:inputUser[]):res {
           break
         case 'email':
           if (record[i].value.length === 0) return { type: rep, desc: 'email length 0' }
+          // eslint-disable-next-line no-case-declarations
+          const regOficial = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?(?:\.[a-zA-Z0-9](?:[a-zA-Z0-9-]{0,61}[a-zA-Z0-9])?)*$/
+          if (!regOficial.test(record[i].value)) return { type: rep, desc: 'email error' }
           break
       }
     }

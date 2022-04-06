@@ -10,7 +10,12 @@ module.exports = {
       yellow: '#FDAF02',
       yellow1: '#FA7D09',
       yellow2: '#FF4301',
-      white: '#FFFFFF'
+      white: '#FFFFFF',
+      modal: 'rgba(10, 18, 30, 0.38)',
+      red: 'rgb(254 202 202)',
+      blackRed: 'rgb(185 28 28)',
+      lima: 'rgb(217 249 157)',
+      blackLima: 'rgb(132 204 22)'
     },
     extend: {
       fontFamily: {
